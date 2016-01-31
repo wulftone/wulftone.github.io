@@ -13,15 +13,15 @@ Specifically, I was writing a little ditty in CoffeeScript in Ruby on Rails and 
 
 Here's a couple Backbone models:
 
-```coffee
+{% highlight coffeescript %}
 class H.Models.User extends Backbone.Model
 
 class H.Models.Household extends Backbone.Model
-```
+{% endhighlight %}
 
 Here's the constructors for those two models, after being compiled into javascript:
 
-```js
+{% highlight javascript %}
 a = new H.Models.User
 User {_queue: Backbone.BlockingQueue, cid: "c33", attributes: Object, _changing: false, _previousAttributes: Object…}
 
@@ -39,11 +39,11 @@ function Household() {
   _ref = Household.__super__.constructor.apply(this, arguments);
   return _ref;
 }
-```
+{% endhighlight %}
 
 The names of the two constructors are `User` and `Household`.  Makes sense, right?  But the constructors get mangled into the same thing by the Uglifier gem:
 
-```js
+{% highlight javascript %}
 // Dev Tools console
 a = new H.Models.User
 n {_queue: n.BlockingQueue, cid: "c7", attributes: Object, _changing: false, _previousAttributes: Object…}
@@ -60,6 +60,6 @@ b.constructor
 function n() {
   return t = n.__super__.constructor.apply(this, arguments);
 }
-```
+{% endhighlight %}
 
 Notice `a.constructor.name === b.constructor.name`.  Oops.  So yeah... don't rely on them being `User` or whatever in any code.  ; )

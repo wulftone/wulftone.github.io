@@ -7,7 +7,7 @@ categories: backbone javascript
 
 Just for people who might find this, you can modify the events object in your `initialize` method like so:
 
-```js
+{% highlight javascript %}
 var MyView = Backbone.View.extend({
 
   events: {
@@ -29,6 +29,6 @@ var MyView = Backbone.View.extend({
   }
 
 });
-```
+{% endhighlight %}
 
 `delegateEvents` will get called after initialize, and your events hash will be dynamically changed by all the fiddling you do in the `initialize` method.
